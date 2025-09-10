@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💰 Debt Reminder App
 
-## Getting Started
+Sistema de gerenciamento de cobranças e pagamentos entre amigos com integração PIX.
 
-First, run the development server:
+## ✨ Funcionalidades
+
+- 🔐 **Autenticação completa** (cadastro, login, verificação por email/SMS)
+- 💸 **Gestão de dívidas** (registrar quem deve para quem)
+- 📱 **PIX integrado** (gerar QR codes, validar chaves)
+- 👥 **Contatos** (salvar e validar chaves PIX)
+- 📊 **Dashboard** (totais de dívidas e créditos)
+- 🔄 **Copia e cola PIX** (parser de códigos EMV)
+
+## 🚀 Como usar
+
+### Desenvolvimento local
 
 ```bash
+# Instalar dependências
+npm install
+
+# Configurar banco de dados
+npx prisma migrate dev
+
+# Rodar o projeto
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Deploy no Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Conecte seu repositório GitHub ao Vercel
+2. Configure as variáveis de ambiente (ver `.env.example`)
+3. O Vercel fará o deploy automaticamente
 
-## Learn More
+## 🛠️ Tecnologias
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend**: Next.js 15, React 19, TailwindCSS
+- **Backend**: Next.js API Routes, Prisma ORM
+- **Banco**: PostgreSQL (produção) / SQLite (desenvolvimento)
+- **Autenticação**: JWT + cookies httpOnly
+- **PIX**: Integração com API EFI (antiga Gerencianet)
+- **Email/SMS**: Nodemailer + Twilio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Configuração
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Copie o arquivo `.env.example` para `.env.local` e configure suas variáveis de ambiente.
 
-## Deploy on Vercel
+## 🤝 Contribuição
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork o projeto
+2. Crie uma branch para sua feature
+3. Commit suas mudanças
+4. Push para a branch
+5. Abra um Pull Request
