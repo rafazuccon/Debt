@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN "avatar" TEXT;
+ALTER TABLE "User" ADD COLUMN "documento" TEXT;
+ALTER TABLE "User" ADD COLUMN "nome" TEXT;
+ALTER TABLE "User" ADD COLUMN "pix" TEXT;

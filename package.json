@@ -3,22 +3,37 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "next dev -H 127.0.0.1 -p 3000",
+    "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate",
+    "vercel-build": "prisma generate && prisma db push && next build"
   },
   "dependencies": {
+    "@mui/material": "^7.3.1",
+    "@prisma/client": "^6.15.0",
+    "axios": "^1.11.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "framer-motion": "^12.23.12",
+    "jose": "^6.1.0",
+    "lucide-react": "^0.542.0",
+    "next": "15.4.6",
+    "nodemailer": "^7.0.6",
+    "openai": "^5.16.0",
+    "qrcode.react": "^4.2.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.4.6"
+    "twilio": "^5.9.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "prisma": "^6.15.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

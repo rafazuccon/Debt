@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+certs/
+.env.local
+certs/ echo .env.local
+certs/ echo .env.local
