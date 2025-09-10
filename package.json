@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "vercel-build": "prisma generate && prisma db push && next build"
+    "vercel-build": "DATABASE_URL=${DATABASE_URL:-file:./dev.db} JWT_SECRET=${JWT_SECRET:-default-jwt-secret} prisma generate && next build"
   },
   "dependencies": {
     "@mui/material": "^7.3.1",

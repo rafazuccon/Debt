@@ -16,7 +16,7 @@ function expiresAtFromNow(min = 5) {
 
 // ---- Normalizador de telefone BR ----
 function onlyDigits(s = "") { return s.replace(/\D/g, ""); }
-export function toE164BR(input) {
+function toE164BR(input) {
   const d = onlyDigits(input || "");
   if (d.startsWith("55") && (d.length === 12 || d.length === 13)) return `+${d}`;
   if (d.length === 10 || d.length === 11) return `+55${d}`;

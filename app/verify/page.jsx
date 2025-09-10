@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,7 @@ function toE164BRClient(input) {
   return input;
 }
 
-export default function VerifyPage() {
+function VerifyForm() {
   const router = useRouter();
   const sp = useSearchParams();
 
@@ -125,5 +125,13 @@ export default function VerifyPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function VerifyPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-black text-white flex items-center justify-center">Carregando...</div>}>
+      <VerifyForm />
+    </Suspense>
   );
 }
