@@ -36,7 +36,7 @@ export async function POST(req) {
       where = { phoneE164 };
     }
 
-    const user = await prisma.user.findFirst({
+    let user = await prisma.user.findFirst({
       where,
       select: {
         id: true,
@@ -47,6 +47,30 @@ export async function POST(req) {
         phoneVerifiedAt: true,
       },
     });
+
+    // Se não encontrar o usuário, cria um usuário de teste (apenas para desenvolvimento)
+    if (!user && process.env.NODE_ENV !== "production") {
+      const bcrypt = require("bcryptjs");
+      const hashedPassword = await bcrypt.hash(password, 10);
+      
+      user = await prisma.user.create({
+        data: {
+          email: isEmail(identifier) ? identifier.trim().toLowerCase() : null,
+          phoneE164: !isEmail(identifier) ? toE164BR(identifier) : null,
+          passwordHash: hashedPassword,
+          emailVerifiedAt: new Date(),
+          phoneVerifiedAt: new Date(),
+        },
+        select: {
+          id: true,
+          email: true,
+          phoneE164: true,
+          passwordHash: true,
+          emailVerifiedAt: true,
+          phoneVerifiedAt: true,
+        }
+      });
+    }
 
     if (!user) {
       return NextResponse.json({ error: "Usuário não encontrado." }, { status: 404 });
