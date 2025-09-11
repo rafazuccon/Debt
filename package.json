@@ -8,11 +8,12 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "vercel-build": "prisma generate && next build"
+    "vercel-build": "prisma migrate deploy && prisma generate && next build"
   },
   "dependencies": {
     "@mui/material": "^7.3.1",
     "@prisma/client": "^6.15.0",
+    "@types/pg": "^8.15.5",
     "axios": "^1.11.0",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.2",
@@ -22,6 +23,7 @@
     "next": "15.4.6",
     "nodemailer": "^7.0.6",
     "openai": "^5.16.0",
+    "pg": "^8.16.3",
     "qrcode.react": "^4.2.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
