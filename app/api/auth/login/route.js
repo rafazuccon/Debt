@@ -94,7 +94,6 @@ export async function POST(req) {
       });
     }
 
-    // verificado -> cria sessão
  const token = await new SignJWT({ uid: user.id })
   .setProtectedHeader({ alg: "HS256" })
   .setExpirationTime("7d")

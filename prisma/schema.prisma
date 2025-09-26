@@ -1,16 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model User {
-  id              String   @id @default(cuid())
-  email           String?  @unique
-  phoneE164       String?  @unique
+  id              String    @id @default(cuid())
+  email           String?   @unique
+  phoneE164       String?   @unique
   passwordHash    String
   emailVerifiedAt DateTime?
   phoneVerifiedAt DateTime?
@@ -18,10 +18,9 @@ model User {
   pix             String?
   documento       String?
   avatar          String?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-
-  otpCodes OtpCode[]
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  otpCodes        OtpCode[]
 }
 
 model OtpCode {
@@ -37,8 +36,7 @@ model OtpCode {
   lastSentAt  DateTime
   consumedAt  DateTime?
   createdAt   DateTime   @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, purpose, destination])
 }

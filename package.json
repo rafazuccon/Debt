@@ -8,11 +8,12 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "vercel-build": "prisma migrate deploy && prisma generate && next build"
+    "vercel-build": "prisma generate && next build"
   },
   "dependencies": {
     "@mui/material": "^7.3.1",
     "@prisma/client": "^6.15.0",
+    "@supabase/supabase-js": "^2.58.0",
     "@types/pg": "^8.15.5",
     "axios": "^1.11.0",
     "bcrypt": "^6.0.0",
