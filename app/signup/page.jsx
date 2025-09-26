@@ -76,7 +76,8 @@ function SignupForm() {
         `&email=${encodeURIComponent(data.email || body.email || "")}` +
         `&next=${encodeURIComponent(next)}`;
 
-      router.push(url);
+      // Use window.location para evitar problemas de hidratação
+      window.location.href = url;
     } catch {
       setErr("Falha de rede ao cadastrar.");
     } finally {

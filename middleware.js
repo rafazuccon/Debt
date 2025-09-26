@@ -7,6 +7,12 @@ const PUBLIC = [
   "/verify",
   "/api/otp",
   "/api/auth",
+  "/api/test-email-direct",
+  "/api/debug",
+  "/api/email-diagnostics",
+  "/api/test-multiple-emails",
+  "/api/email-help",
+  "/api/system-status",
   "/_next",
   "/favicon.ico",
 ];
