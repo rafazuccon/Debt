@@ -9,6 +9,8 @@ const PUBLIC = [
   "/api/auth",
   "/api/test-email-direct",
   "/api/debug",
+  "/api/debug-signup",
+  "/api/test-signup",
   "/api/email-diagnostics",
   "/api/test-multiple-emails",
   "/api/email-help",
