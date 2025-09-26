@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { PrismaClient } from "@prisma/client";
-import { toE164BR } from "@/lib/phone";
+import { toE164BR } from "../../lib/phone.js";
 import nodemailer from "nodemailer";
 import crypto from "crypto";
 
@@ -9,7 +9,10 @@ const prisma = new PrismaClient();
 
 export async function POST(req) {
   try {
+    console.log("[signup] Iniciando cadastro...");
     const { email, phone, password } = await req.json();
+    console.log("[signup] Dados recebidos:", { email: !!email, phone: !!phone, password: !!password });
+    
     if (!email && !phone) {
       return NextResponse.json({ error: "Informe e-mail ou telefone." }, { status: 400 });
     }
@@ -134,6 +137,10 @@ export async function POST(req) {
     }
   } catch (err) {
     console.error("[signup] erro:", err);
-    return NextResponse.json({ error: "Erro interno no servidor." }, { status: 500 });
+    console.error("[signup] stack:", err.stack);
+    return NextResponse.json({ 
+      error: "Erro interno no servidor.",
+      debug: process.env.NODE_ENV === 'development' ? err.message : undefined
+    }, { status: 500 });
   }
 }
